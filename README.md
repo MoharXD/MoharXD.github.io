@@ -45,6 +45,6 @@ MoharXD.github.io/
 ├── projects.html     # Featured Works
 ├── contact.html      # Contact Information
 ├── css/
-│   └── style.css     # Main stylesheet (Glassmorphism UI)
+│   └── style.css     
 └── js/
-    └── script.js     # 3D tilt and scroll animations
+    └── script.js     
