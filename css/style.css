@@ -28,7 +28,7 @@ body { background-color: var(--bg-color); color: var(--text-primary); min-height
 /* Navigation */
 .glass-nav { position: fixed; top: 1rem; left: 50%; transform: translateX(-50%); width: 90%; max-width: 800px; z-index: 100; background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid var(--glass-border); border-radius: 100px; padding: 0.75rem 2rem; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.05em; background: linear-gradient(to right, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.05em; background: linear-gradient(to right, #fff, #a1a1aa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .glass-nav ul { display: flex; gap: 2.5rem; list-style: none; }
 .glass-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s ease; position: relative; }
 .glass-nav a:hover, .glass-nav a.active { color: var(--text-primary); }
@@ -38,7 +38,7 @@ body { background-color: var(--bg-color); color: var(--text-primary); min-height
 .container { max-width: 1100px; margin: 150px auto 40px; padding: 0 2rem; perspective: 1000px; flex: 1; }
 .badge { display: inline-block; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 100px; margin-bottom: 2rem; }
 h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; }
-.gradient-text { background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.gradient-text { background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 500; color: var(--text-secondary); margin-bottom: 2rem; }
 p { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 3rem; }
 
