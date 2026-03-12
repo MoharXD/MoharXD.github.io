@@ -16,7 +16,7 @@ I'm a B.Tech IT student at VIT and a passionate developer interested in:
 * Web Development & UI/UX (Glassmorphism)
 * AI / ML Integration
 * System Architecture & Design
-* Building innovative tech projects (like my Active Acoustic Privacy Shield!)
+* Building innovative tech projects
 
 I enjoy creating projects that solve real-world problems and exploring new technologies.
 
