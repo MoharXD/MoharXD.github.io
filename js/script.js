@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. Intersection Observer for Scroll Animations (handles the wrapper)
+    // 1. Intersection Observer for Scroll Animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
@@ -19,28 +19,35 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(el);
     });
 
-    // 2. 3D Tilt Effect (handles the inner card safely)
+    // 2. 3D Tilt Effect (Disabled on mobile to prevent touch-screen glitches)
     const tiltElements = document.querySelectorAll('.tilt-element');
 
     tiltElements.forEach(element => {
         element.addEventListener('mousemove', (e) => {
-            const rect = element.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const xRotation = -((y - rect.height / 2) / rect.height) * 10;
-            const yRotation = ((x - rect.width / 2) / rect.width) * 10;
+            // Only apply on screens wider than 768px (Laptops/Desktops)
+            if (window.innerWidth > 768) {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xRotation = -((y - rect.height / 2) / rect.height) * 10;
+                const yRotation = ((x - rect.width / 2) / rect.width) * 10;
 
-            element.style.transform = `perspective(1000px) scale(1.02) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+                element.style.transform = `perspective(1000px) scale(1.02) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+            }
         });
 
         element.addEventListener('mouseleave', () => {
-            element.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            element.style.transform = 'perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)';
+            if (window.innerWidth > 768) {
+                element.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                element.style.transform = 'perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)';
+            }
         });
 
         element.addEventListener('mouseenter', () => {
-            element.style.transition = 'none'; // Instant mouse tracking
+            if (window.innerWidth > 768) {
+                element.style.transition = 'none'; // Instant mouse tracking
+            }
         });
     });
 });
