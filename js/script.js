@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     // 1. Intersection Observer for Scroll Animations
     const observerOptions = {
         threshold: 0.1,
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const rect = element.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
+
                 const xRotation = -((y - rect.height / 2) / rect.height) * 10;
                 const yRotation = ((x - rect.width / 2) / rect.width) * 10;
 
