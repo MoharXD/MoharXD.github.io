@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. Intersection Observer for Scroll Animations
+    // Intersection Observer for Scroll Animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
@@ -15,16 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal').forEach(el => {
-        observer.observe(el);
-    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // 2. 3D Tilt Effect (Disabled on mobile to prevent touch-screen glitches)
+    // 3D Tilt Effect
     const tiltElements = document.querySelectorAll('.tilt-element');
 
     tiltElements.forEach(element => {
         element.addEventListener('mousemove', (e) => {
-            // Only apply on screens wider than 768px (Laptops/Desktops)
             if (window.innerWidth > 768) {
                 const rect = element.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -46,14 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         element.addEventListener('mouseenter', () => {
             if (window.innerWidth > 768) {
-                element.style.transition = 'none'; // Instant mouse tracking
+                element.style.transition = 'none';
             }
         });
     });
-    // 3. Typing Animation for Hero Section
+
+    // Typing Animation 
     const typingTextElement = document.querySelector('.typing-text');
 
-    // Only run this if the element exists (prevents errors on other pages)
     if (typingTextElement) {
         const textToType = "Mohar Gorai";
         let index = 0;
@@ -62,12 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index < textToType.length) {
                 typingTextElement.textContent += textToType.charAt(index);
                 index++;
-                // 120ms delay between each letter typed
                 setTimeout(typewriter, 120);
             }
         }
 
-        // Start the typing effect after 800ms (waits for the fade-up animation)
         setTimeout(typewriter, 800);
     }
 });
