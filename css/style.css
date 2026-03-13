@@ -65,48 +65,96 @@ body {
     background: #000;
 }
 
-/* Floating gradient orbs for background depth */
+/* Base orb styling */
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
-    animation: float 20s infinite ease-in-out alternate;
+    filter: blur(100px);
+    /* Increased blur for smoother color blending */
+    opacity: 0.5;
 }
 
+/* Indigo Orb */
 .orb-1 {
     width: 400px;
     height: 400px;
     background: var(--accent-1);
-    top: -10%;
-    left: -10%;
+    top: 0;
+    left: 0;
+    /* 25-second cycle, infinite loop */
+    animation: roam-1 25s infinite ease-in-out;
 }
 
+/* Pink Orb */
 .orb-2 {
     width: 500px;
     height: 500px;
     background: var(--accent-2);
-    bottom: -20%;
-    right: -10%;
-    animation-delay: -5s;
+    bottom: 0;
+    right: 0;
+    /* 32-second cycle, offset timing */
+    animation: roam-2 32s infinite ease-in-out;
 }
 
+/* Cyan Orb */
 .orb-3 {
     width: 300px;
     height: 300px;
     background: var(--accent-3);
-    top: 40%;
-    left: 40%;
-    animation-delay: -10s;
+    top: 50%;
+    left: 50%;
+    /* 28-second cycle */
+    animation: roam-3 28s infinite ease-in-out;
 }
 
-@keyframes float {
-    0% {
-        transform: translate(0, 0) scale(1);
+/* --- Unique Roaming Animations --- */
+/* vw = viewport width, vh = viewport height */
+
+@keyframes roam-1 {
+
+    0%,
+    100% {
+        transform: translate(-10%, -10%) scale(1);
     }
 
+    33% {
+        transform: translate(40vw, 20vh) scale(1.2);
+    }
+
+    66% {
+        transform: translate(15vw, 60vh) scale(0.8);
+    }
+}
+
+@keyframes roam-2 {
+
+    0%,
     100% {
-        transform: translate(100px, 50px) scale(1.2);
+        transform: translate(10%, 10%) scale(1);
+    }
+
+    33% {
+        transform: translate(-40vw, -30vh) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20vw, -70vh) scale(0.9);
+    }
+}
+
+@keyframes roam-3 {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    33% {
+        transform: translate(30vw, -40vh) scale(1.3);
+    }
+
+    66% {
+        transform: translate(-30vw, 30vh) scale(0.7);
     }
 }
 
@@ -562,23 +610,27 @@ p {
         opacity: 0;
     }
 }
+
 /* * Premium Glassmorphic Cursor Trail (Smoked Glass Outline) 
  * Scaled down with a dark border for crisp, elegant visibility.
  */
 .cursor-trail-part {
     position: fixed;
-    width: 20px; /* Scaled back down to a sleek, manageable size */
+    width: 20px;
+    /* Scaled back down to a sleek, manageable size */
     height: 20px;
-    background: rgba(255, 255, 255, 0.04); /* Subtle frosted fill */
-    backdrop-filter: blur(4px); 
-    -webkit-backdrop-filter: blur(4px); 
-    border: 1px solid rgba(0, 0, 0, 0.8); /* The dark border you suggested for sharp contrast */
+    background: rgba(255, 255, 255, 0.04);
+    /* Subtle frosted fill */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    /* The dark border you suggested for sharp contrast */
     border-radius: 50%;
-    pointer-events: none; 
+    pointer-events: none;
     z-index: 9999;
     /* A dark drop shadow to pop against bright orbs, plus a faint white inner rim so it still looks like glass */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2); 
-    transform: translate(-50%, -50%) scale(0.6); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0.6);
     opacity: 1;
     /* Sped up the transition slightly (0.5s) to match the smaller size */
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -586,25 +638,30 @@ p {
 
 .cursor-trail-part.fade {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1.4); /* Tighter, cleaner expansion */
+    transform: translate(-50%, -50%) scale(1.4);
+    /* Tighter, cleaner expansion */
 }
+
 /* * Premium Glassmorphic Cursor Trail (Smoked Glass Outline) 
  * Scaled down with a dark border for crisp, elegant visibility.
  */
 .cursor-trail-part {
     position: fixed;
-    width: 20px; /* Scaled back down to a sleek, manageable size */
+    width: 20px;
+    /* Scaled back down to a sleek, manageable size */
     height: 20px;
-    background: rgba(255, 255, 255, 0.04); /* Subtle frosted fill */
-    backdrop-filter: blur(4px); 
-    -webkit-backdrop-filter: blur(4px); 
-    border: 1px solid rgba(0, 0, 0, 0.8); /* The dark border you suggested for sharp contrast */
+    background: rgba(255, 255, 255, 0.04);
+    /* Subtle frosted fill */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    /* The dark border you suggested for sharp contrast */
     border-radius: 50%;
-    pointer-events: none; 
+    pointer-events: none;
     z-index: 9999;
     /* A dark drop shadow to pop against bright orbs, plus a faint white inner rim so it still looks like glass */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2); 
-    transform: translate(-50%, -50%) scale(0.6); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0.6);
     opacity: 1;
     /* Sped up the transition slightly (0.5s) to match the smaller size */
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -612,7 +669,8 @@ p {
 
 .cursor-trail-part.fade {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1.4); /* Tighter, cleaner expansion */
+    transform: translate(-50%, -50%) scale(1.4);
+    /* Tighter, cleaner expansion */
 }
 
 /* =========================================
