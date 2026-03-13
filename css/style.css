@@ -1,4 +1,6 @@
-/* --- Variables --- */
+/* =========================================
+   1. VARIABLES & THEMING
+========================================= */
 :root {
     --bg-color: #050505;
     --text-primary: #ffffff;
@@ -11,7 +13,9 @@
     --accent-3: #06b6d4;
 }
 
-/* --- Base Styles --- */
+/* =========================================
+   2. BASE & RESET
+========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -27,10 +31,12 @@ body {
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    cursor: crosshair;
+    cursor: default;
 }
 
-/* --- Ambient Background Lights --- */
+/* =========================================
+   3. BACKGROUND & AMBIENT FX
+========================================= */
 .ambient-background {
     position: fixed;
     top: 0;
@@ -86,7 +92,9 @@ body {
     }
 }
 
-/* --- Glassmorphism Utilities --- */
+/* =========================================
+   4. GLASSMORPHISM CORE
+========================================= */
 .glass-panel {
     background: var(--glass-bg);
     backdrop-filter: blur(24px) saturate(180%);
@@ -99,7 +107,25 @@ body {
     overflow: hidden;
 }
 
-/* --- Navigation --- */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 var(--glass-highlight), inset 1px 0 0 0 var(--glass-highlight);
+    border-radius: 24px;
+    padding: 2.5rem;
+    transition: border-color 0.3s ease;
+    height: 100%;
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   5. NAVIGATION
+========================================= */
 .glass-nav {
     position: fixed;
     top: 1rem;
@@ -165,7 +191,9 @@ body {
     border-radius: 50%;
 }
 
-/* --- Layout & Typography --- */
+/* =========================================
+   6. TYPOGRAPHY & LAYOUT
+========================================= */
 .container {
     max-width: 1100px;
     margin: 150px auto 40px;
@@ -175,18 +203,29 @@ body {
     width: 100%;
 }
 
+.badge,
+.date-badge {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
 .badge {
     display: inline-block;
     padding: 0.4rem 1rem;
     font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     border-radius: 100px;
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.date-badge {
+    color: var(--accent-3);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 h1 {
@@ -195,6 +234,12 @@ h1 {
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 1rem;
+}
+
+.headline-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .gradient-text {
@@ -218,7 +263,10 @@ p {
     margin-bottom: 3rem;
 }
 
-/* --- Hero Section --- */
+/* =========================================
+   7. UI COMPONENTS
+========================================= */
+/* Hero Section */
 .hero-layout {
     display: flex;
     align-items: center;
@@ -248,7 +296,7 @@ p {
     display: block;
 }
 
-/* --- Buttons --- */
+/* Buttons */
 .btn-group {
     display: flex;
     gap: 1rem;
@@ -316,7 +364,7 @@ p {
     flex-wrap: wrap;
 }
 
-/* --- Bento Grids & Cards --- */
+/* Grids & Cards */
 .page-header {
     margin-bottom: 3rem;
 }
@@ -325,22 +373,6 @@ p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-}
-
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 var(--glass-highlight), inset 1px 0 0 0 var(--glass-highlight);
-    border-radius: 24px;
-    padding: 2.5rem;
-    transition: border-color 0.3s ease;
-    height: 100%;
-}
-
-.glass-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .glass-card h3 {
@@ -354,6 +386,26 @@ p {
     margin-bottom: 0;
 }
 
+.github-card {
+    padding: 2.5rem;
+}
+
+.github-calendar-container {
+    width: 100%;
+    overflow-x: auto;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.github-calendar-container img {
+    width: 100%;
+    min-width: 700px;
+    opacity: 0.9;
+}
+
+/* Timeline & Lists */
 .timeline {
     border-left: 2px solid var(--glass-border);
     padding-left: 2rem;
@@ -377,39 +429,14 @@ p {
     box-shadow: 0 0 10px var(--accent-1);
 }
 
-.date-badge {
-    color: var(--accent-3);
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-/* --- GitHub Calendar Integration --- */
-.github-calendar-container {
-    width: 100%;
-    overflow-x: auto;
-    padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
-    display: flex;
-    justify-content: center;
-}
-
-.github-calendar-container img {
-    width: 100%;
-    min-width: 700px;
-    opacity: 0.9;
-}
-
-/* --- Utilities & Lists --- */
 .contact-wrapper {
     max-width: 650px;
     margin: 0 auto;
     text-align: center;
 }
 
-.contact-list {
+.contact-list,
+.language-list {
     list-style: none;
     text-align: left;
     display: inline-block;
@@ -439,9 +466,7 @@ p {
 }
 
 .language-list {
-    list-style: none;
     margin-top: 1.5rem;
-    line-height: 2.5;
     color: var(--text-secondary);
 }
 
@@ -449,7 +474,7 @@ p {
     color: #fff;
 }
 
-/* --- Footer --- */
+/* Footer */
 .glass-footer {
     text-align: center;
     padding: 2rem 0;
@@ -462,7 +487,9 @@ p {
     width: 100%;
 }
 
-/* --- Animations --- */
+/* =========================================
+   8. ANIMATIONS & EFFECTS
+========================================= */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -509,27 +536,29 @@ p {
     }
 }
 
-/* --- Dynamic Cursor Trail Nodes --- */
+/* Liquid Light Cursor Tail */
 .cursor-trail-part {
     position: fixed;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     background-color: var(--accent-3);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    box-shadow: 0 0 10px var(--accent-3), inset 0 0 5px rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    opacity: 1;
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.8), 0 0 20px rgba(6, 182, 212, 0.4);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .cursor-trail-part.fade {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.2);
+    transform: translate(-50%, -50%) scale(0.1);
 }
 
-/* --- Responsive Media Queries --- */
+/* =========================================
+   9. RESPONSIVE DESIGN
+========================================= */
 @media (max-width: 1024px) {
     .glass-panel {
         padding: 3rem;
@@ -667,5 +696,9 @@ p {
     .hero-photo-container {
         width: 220px;
         height: 300px;
+    }
+
+    .github-card {
+        padding: 1.5rem;
     }
 }

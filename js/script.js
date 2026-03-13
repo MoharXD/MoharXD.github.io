@@ -1,6 +1,13 @@
+/**
+ * Portfolio Initialization & Interaction Logic
+ * Handles Scroll Reveals, 3D Hover Effects, Typing Animation, and Custom Cursor Tails.
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- Scroll Reveal Logic ---
+    // ==========================================
+    // 1. Scroll Reveal Intersection Observer
+    // ==========================================
     const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
@@ -17,7 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // --- 3D Hover Tilt Effect (Desktop) ---
+
+    // ==========================================
+    // 2. 3D Tilt Effect (Hardware Accelerated)
+    // ==========================================
     const tiltElements = document.querySelectorAll('.tilt-element');
 
     tiltElements.forEach(element => {
@@ -27,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
 
+                // Calculate rotation degree based on cursor position relative to element center
                 const xRotation = -((y - rect.height / 2) / rect.height) * 10;
                 const yRotation = ((x - rect.width / 2) / rect.width) * 10;
 
@@ -48,7 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- Typewriter Effect ---
+
+    // ==========================================
+    // 3. Hero Section Typing Animation
+    // ==========================================
     const typingTextElement = document.querySelector('.typing-text');
 
     if (typingTextElement) {
@@ -63,11 +77,22 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
+        // Delay init to sync with CSS fade-up animation
         setTimeout(typewriter, 800);
     }
 
-    // --- Dynamic Cursor Trail (Desktop) ---
+
+    // ==========================================
+    // 4. Ghost Tail Cursor Animation
+    // ==========================================
     if (window.innerWidth > 768) {
+        let lastX = 0;
+        let lastY = 0;
+        const MIN_DISTANCE_PX = 12; // Throttle rendering based on mouse movement distance
+
+        /**
+         * Spawns a tail node at the given coordinates and triggers its fade animation.
+         */
         const createTrailPart = (x, y) => {
             const part = document.createElement('div');
             part.className = 'cursor-trail-part';
@@ -76,26 +101,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.body.appendChild(part);
 
-            // Force reflow for CSS transition
-            void part.offsetWidth;
-            part.classList.add('fade');
+            // Force browser repaint to ensure CSS transition applies correctly
+            window.requestAnimationFrame(() => {
+                part.classList.add('fade');
+            });
 
-            // Garbage collection post-animation
+            // GC cleanup: Destroy node after transition completes
             setTimeout(() => {
                 part.remove();
-            }, 500);
+            }, 400);
         };
-
-        let lastX = 0;
-        let lastY = 0;
-        const minimumDistance = 15;
 
         window.addEventListener('mousemove', (e) => {
             const deltaX = Math.abs(e.clientX - lastX);
             const deltaY = Math.abs(e.clientY - lastY);
             const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-            if (distance > minimumDistance) {
+            if (distance > MIN_DISTANCE_PX) {
                 createTrailPart(e.clientX, e.clientY);
                 lastX = e.clientX;
                 lastY = e.clientY;
