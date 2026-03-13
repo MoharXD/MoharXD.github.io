@@ -24,17 +24,20 @@ This portfolio was built entirely from scratch using:
 ```text
 MoharXD.github.io/
 │
-├── index.html          # Home Page (with your clean profile photo)
-├── about.html          # Background, Education & Skills
-├── projects.html       # Featured Works & GitHub Links
-├── contact.html        # Contact Information & Professional Links
-├── README.md           # Professional project documentation
+├── index.html            # Entry point: Hero section & high-level intro
+├── about.html            # Education timeline & language proficiencies
+├── project-work.html     # Bento grid of featured apps & GitHub activity
+├── contact.html          # Professional links, email, & location details
+├── README.md             # Project overview & tech stack documentation
 │
 ├── css/
-│   └── style.css       # Core styling, Glassmorphism, and Mobile Responsiveness
+│   └── style.css         # Glassmorphism, roaming bg orbs, & responsive rules
 │
 ├── js/
-│   └── script.js       # Interactivity, 3D Tilt (Desktop only), and Scroll Reveals
+│   └── script.js         # 3D Tilt, typing effects, & glass cursor trail
 │
-└── img/                # Folder for all your image assets
-    └── profile.jpg     # Your profile portrait
+├── img/                  # All visual assets
+│   └── profile.jpg       # Your hero portrait
+│
+└── assets/               # External documents
+    └── Mohar_Resume.pdf  # Your downloadable CV
