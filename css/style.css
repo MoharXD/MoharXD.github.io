@@ -1,4 +1,3 @@
-/* --- Variables --- */
 :root {
     --bg-color: #050505;
     --text-primary: #ffffff;
@@ -11,7 +10,6 @@
     --accent-3: #06b6d4;
 }
 
-/* --- Base --- */
 * {
     margin: 0;
     padding: 0;
@@ -27,9 +25,9 @@ body {
     line-height: 1.6;
     display: flex;
     flex-direction: column;
+    cursor: default;
 }
 
-/* --- Ambient Orbs --- */
 .ambient-background {
     position: fixed;
     top: 0;
@@ -85,7 +83,6 @@ body {
     }
 }
 
-/* --- Glassmorphism --- */
 .glass-panel {
     background: var(--glass-bg);
     backdrop-filter: blur(24px) saturate(180%);
@@ -98,7 +95,6 @@ body {
     overflow: hidden;
 }
 
-/* --- Navigation --- */
 .glass-nav {
     position: fixed;
     top: 1rem;
@@ -164,7 +160,6 @@ body {
     border-radius: 50%;
 }
 
-/* --- Layout & Typography --- */
 .container {
     max-width: 1100px;
     margin: 150px auto 40px;
@@ -217,7 +212,6 @@ p {
     margin-bottom: 3rem;
 }
 
-/* --- Hero Layout --- */
 .hero-layout {
     display: flex;
     align-items: center;
@@ -247,7 +241,6 @@ p {
     display: block;
 }
 
-/* --- Typing Animation --- */
 .cursor {
     display: inline-block;
     width: 4px;
@@ -270,7 +263,6 @@ p {
     }
 }
 
-/* --- Buttons --- */
 .btn-group {
     display: flex;
     gap: 1rem;
@@ -338,7 +330,6 @@ p {
     flex-wrap: wrap;
 }
 
-/* --- Bento Grids & Cards --- */
 .page-header {
     margin-bottom: 3rem;
 }
@@ -408,11 +399,6 @@ p {
     display: block;
 }
 
-/* --- GitHub Calendar --- */
-.full-width-card {
-    grid-column: 1 / -1;
-}
-
 .github-calendar-container {
     width: 100%;
     overflow-x: auto;
@@ -428,7 +414,6 @@ p {
     opacity: 0.9;
 }
 
-/* --- Utilities --- */
 .contact-wrapper {
     max-width: 650px;
     margin: 0 auto;
@@ -475,7 +460,6 @@ p {
     color: #fff;
 }
 
-/* --- Footer --- */
 .glass-footer {
     text-align: center;
     padding: 2rem 0;
@@ -488,7 +472,6 @@ p {
     width: 100%;
 }
 
-/* --- Animations --- */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -513,7 +496,27 @@ p {
     }
 }
 
-/* --- Media Queries --- */
+.cursor-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 2px solid rgba(6, 182, 212, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4), inset 0 0 10px rgba(6, 182, 212, 0.2);
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .cursor-trail {
+        display: block;
+    }
+}
+
 @media (max-width: 1024px) {
     .glass-panel {
         padding: 3rem;
